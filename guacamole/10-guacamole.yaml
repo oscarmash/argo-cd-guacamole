@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: guacamole.ilba.cat
+    - host: guacamole.ceph.ilba.cat
       http:
         paths:
           - path: /guacamole

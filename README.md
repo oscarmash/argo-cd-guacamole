@@ -25,7 +25,6 @@ La password se ha sacado de:
 
 $ kubectl -n argo-cd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
-
 Añadimos nuestro repositorio:
 
 $ argocd repo add git@github.com:oscarmash/argo-cd-guacamole.git --ssh-private-key-path $HOME/.ssh/id_rsa
@@ -33,4 +32,10 @@ $ argocd repo add git@github.com:oscarmash/argo-cd-guacamole.git --ssh-private-k
 Lo podremos ver en la GUI:
 	Setting -> Repositories
 
+# Tipos de instalación de un Helm
 
+## Argo CD Application
+
+Este es uno de los dos tipos de instalación de Helms en nuestro sistema de ArgoCD
+
+$ kcaf metrics-server/app-metrics-server.yaml

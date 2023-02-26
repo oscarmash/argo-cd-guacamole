@@ -1,0 +1,33 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-metrics-server
+  namespace: argo-cd
+spec:
+  project: default
+  destination:
+    namespace: metrics-server
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://kubernetes-sigs.github.io/metrics-server
+    targetRevision: HEAD
+    chart: metrics-server
+    targetRevision: 3.8.3
+    helm:
+      valueFiles:
+      - values.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true 
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 5
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
